@@ -73,12 +73,12 @@
         <h1>COOP NORDESTE</h1>
     </header>
 
-
     <nav>
         <a href="/">Início</a>
-        <a href="/sobre">Sobre</a>
-        <a href="#">Serviços</a>
-        <a href="#">Contato</a>
+        <a href="{% url 'sobre' %}">Sobre</a>
+        <a href="{% url 'cadastro' %}">Cadastro</a>
+        <a href="{% url 'contato' %}">Contato</a>
+
     </nav>
 
 

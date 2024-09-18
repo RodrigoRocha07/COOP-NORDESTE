@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        nav {
+            margin: 20px 0;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #007BFF;
+        }
+
+        section {
+            padding: 50px 20px;
+        }
+
+        section h2 {
+            font-size: 2em;
+            color: #333;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho da página -->
+    <header>
+        <h1>COOP NORDESTE</h1>
+    </header>
+
+    <!-- Navegação -->
+    <nav>
+        <a href="/">Início</a>
+        <a href="{% url 'sobre' %}">Sobre</a>
+        <a href="{% url 'cadastro' %}">Cadastro</a>
+        <a href="{% url 'contato' %}">Contato</a>
+
+    </nav>
+
+    <!-- Conteúdo principal -->
+    <section>
+        <h2>Fale Conosco</h2>
+        <p>Preencha o formulário abaixo para entrar em contato com a nossa equipe.</p>
+        
+        <form action="/enviar-contato" method="POST">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="mensagem">Mensagem:</label>
+            <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+
+            <input type="submit" value="Enviar">
+        </form>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2024 - COOP NORDESTE. Todos os Direitos Reservados</p>
+    </footer>
+
+</body>
+</html>
