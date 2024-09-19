@@ -1,6 +1,6 @@
 from django.db import models
 from datetime import timedelta
-
+from django import forms
 class Categorias(models.Model):
     nome = models.CharField(max_length=255)
     tipo = models.CharField(max_length=255)
@@ -49,7 +49,6 @@ class Cooperado(models.Model):
         verbose_name = 'Cooperado'
         verbose_name_plural = 'Cooperados'
         ordering = ['nome']
-
 
 
 

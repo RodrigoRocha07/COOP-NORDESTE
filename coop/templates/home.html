@@ -65,16 +65,20 @@
     <nav>
         <a href="/">Início</a>
         <a href="{% url 'sobre' %}">Sobre</a>
-        <a href="{% url 'cadastro' %}">Cadastro</a>
+        <a href="{% url 'cadastro' %}">Cadastrar</a>
         <a href="{% url 'contato' %}">Contato</a>
-
     </nav>
 
     <!-- Conteúdo principal -->
     <section>
-        <h2>Explore Nosso Site</h2>
-        <p>Aqui você encontrará informações sobre nossos serviços e mais!</p>
-        <p>Nosso objetivo é oferecer a melhor experiência para nossos usuários.</p>
+        <h2>Lista de cooperados</h2>
+            <ul>
+                {% for cooperado in cooperados %}
+                <li>
+                    {{cooperado.nome}} - {{cooperado.cpf_cnpj}} 
+                </li>
+                {% endfor %}
+            </ul>
     </section>
 
     <!-- Rodapé -->
