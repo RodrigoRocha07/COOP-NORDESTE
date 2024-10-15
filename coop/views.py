@@ -25,8 +25,6 @@ def cadastrar(request):
     endereco = request.POST.get('endereco')
     telefone = request.POST.get('telefone')
     ativo = request.POST.get('ativo') == 'on'  
-
-
     Cooperado.objects.create(
         nome=nome,
         cpf_cnpj=cpf_cnpj,
@@ -34,8 +32,6 @@ def cadastrar(request):
         telefone=telefone,
         ativo=ativo
     )
-
-
     return render(request, 'cadastro.html')
 
 

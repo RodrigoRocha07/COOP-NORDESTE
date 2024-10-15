@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        nav {
+            margin: 20px 0;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #007BFF;
+        }
+
+        section {
+            padding: 50px 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho da página -->
+    <header>
+        <h1>COOP NORDESTE</h1>
+    </header>
+
+    <!-- Navegação -->
+    <nav>
+        <a href="/">Início</a>
+        <a href="{% url 'sobre' %}">Sobre</a>
+        <a href="{% url 'cadastro' %}">Cadastrar</a>
+        <a href="{% url 'contato' %}">Contato</a>
+    </nav>
+
+    <!-- Conteúdo principal -->
+    <section>
+        <h2>Lista de cooperados</h2>
+            <ul>
+                {% for cooperado in cooperados %}
+                <li>
+                    {{cooperado.nome}} - {{cooperado.cpf_cnpj}} 
+                </li>
+                {% endfor %}
+            </ul>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2024 - Todos os Direitos Reservados</p>
+    </footer>
+
+</body>
+</html>

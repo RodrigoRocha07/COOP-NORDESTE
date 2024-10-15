@@ -1,90 +1,237 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Inicial</title>
+    <title>Painel de Controle</title>
     <style>
-
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            text-align: center;
+            background-color: #f0f0f0;
         }
 
         header {
-            background-color: #333;
+            background-color: #0066ff;
             color: white;
-            padding: 20px 0;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-
-        nav {
-            margin: 20px 0;
-        }
-
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #333;
+        header .logo {
+            font-size: 24px;
             font-weight: bold;
         }
 
-        nav a:hover {
-            color: #007BFF;
-        }
-
-        section {
-            padding: 50px 20px;
-        }
-
-        footer {
-            background-color: #333;
+        header nav a {
             color: white;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
+            text-decoration: none;
+            margin-right: 20px;
+            font-size: 16px;
+        }
+
+        header nav a:last-child {
+            margin-right: 0;
+        }
+
+        .container {
+            display: flex;
+            padding: 20px;
+        }
+
+        .main {
+            flex: 3;
+            padding-right: 20px;
+        }
+
+        .side {
+            flex: 1;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .register-clock {
+            text-align: center;
+        }
+
+        .register-clock .time {
+            font-size: 48px;
+            margin: 20px 0;
+        }
+
+        .register-button {
+            background-color: #0066ff;
+            color: white;
+            font-size: 20px;
+            padding: 20px;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            height: 150px;
+            width: 150px;
+            align-items: center;
+            line-height: 150px;
+        }
+
+        .register-button:hover {
+            background-color: #0052cc;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .actions button {
+            background-color: black;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 48%;
+        }
+
+        .side .ad {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .ad h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .ad p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .recent-records {
+            margin-top: 20px;
+        }
+
+        .recent-records table {
             width: 100%;
+            border-collapse: collapse;
+        }
+
+        .recent-records table th,
+        .recent-records table td {
+            text-align: left;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .recent-records table th {
+            background-color: #f0f0f0;
+        }
+        .action-button{
+            width: 100%;
+            background-color: black;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            width: 48%;
+        }
+        .action-button:hover{
+            background-color: #333;
         }
     </style>
 </head>
+
 <body>
-
-    <!-- Cabeçalho da página -->
     <header>
-        <h1>COOP NORDESTE</h1>
+        <div class="logo">LOGO</div>
+        <nav>
+            <a href="#">Início</a>
+            <a href="#">Cadastrar Pessoa</a>
+            <a href="#">Exportar</a>
+        </nav>
+        <div>Olá, Usuário</div>
     </header>
+    <h2>Painel de controle</h2>
+    <div class="container">
+        <div class="main">
+            <div class="card register-clock">
+                <h2>Registro de Ponto</h2>
+                <div id="clock" class="time"></div>
+                <div class="register-button">Registrar Ponto</div>
+            </div>
 
-    <!-- Navegação -->
-    <nav>
-        <a href="/">Início</a>
-        <a href="{% url 'sobre' %}">Sobre</a>
-        <a href="{% url 'cadastro' %}">Cadastrar</a>
-        <a href="{% url 'contato' %}">Contato</a>
-    </nav>
+            <div class="recent-records card">
+                <h2>Últimos Registros</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Data</th>
+                            <th>Hora</th>
+                            <th>Tipo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dados aqui -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-    <!-- Conteúdo principal -->
-    <section>
-        <h2>Lista de cooperados</h2>
-            <ul>
-                {% for cooperado in cooperados %}
-                <li>
-                    {{cooperado.nome}} - {{cooperado.cpf_cnpj}} 
-                </li>
-                {% endfor %}
-            </ul>
-    </section>
+        <div class="side">
+            
+            <div class="card actions">
+                <a class="action-button" href="{% url 'cadastro' %}">Cadastrar</a>
+                <a class="action-button" href="{% url 'cadastro' %}">Exportar Relatórios</a>
+            </div>
 
-    <!-- Rodapé -->
-    <footer>
-        <p>&copy; 2024 - Todos os Direitos Reservados</p>
-    </footer>
 
+            <div class="ad">
+                <h3>Anúncio 1</h3>
+                <p>Conteúdo do anúncio aqui...</p>
+            </div>
+
+            <div class="ad">
+                <h3>Anúncio 2</h3>
+                <p>Conteúdo do anúncio aqui...</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('clock').textContent = timeString;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
 </body>
+
 </html>
